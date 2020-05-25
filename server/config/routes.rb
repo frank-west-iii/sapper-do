@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :todos, only: :index
+  resources :todos, only: %i[index show]
 end

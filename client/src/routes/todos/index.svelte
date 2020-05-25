@@ -1,14 +1,16 @@
+<script context="module">
+  export async function preload(page, session) {
+    const res = await this.fetch('http://localhost:3000/todos');
+    const todos = await res.json();
+
+    return { todos };
+  }
+</script>
+
 <script>
-  import { onMount } from 'svelte';
-
-  let todos = [];
-
-  onMount(async () => {
-    const res = await fetch('http://localhost:3000/todos');
-    todos = await res.json();
-  });
+  export let todos = [];
 </script>
 
 {#each todos as todo}
-  <p>{todo.title}</p>
+  <div><a rel=prefetch href="{`/todos/${todo.id}`}">{todo.title}</a></div>
 {/each}
