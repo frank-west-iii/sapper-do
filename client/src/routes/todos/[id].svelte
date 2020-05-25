@@ -11,6 +11,12 @@
   export let todo = {}
 </script>
 
-<a href="/todos">Todos</a>
+<svelte:head>
+<title>Todos - {todo.title}</title>
+</svelte:head>
 
-<p>{todo.title}</p>
+<a href="/todos">Todos</a> &gt; Show
+
+<div>
+  <a href="/todos/edit-{todo.id}">{todo.title}</a>
+</div>

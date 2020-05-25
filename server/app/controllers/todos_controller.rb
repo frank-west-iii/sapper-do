@@ -4,6 +4,22 @@ class TodosController < ApplicationController
   end
 
   def show
-    render json: Todo.find(params[:id])
+    render json: todo
+  end
+
+  def update
+    todo.update!(todo_params)
+
+    render json: todo
+  end
+
+  private
+
+  def todo
+    @_todo ||= Todo.find(params[:id])
+  end
+
+  def todo_params
+    params.require(:todo).permit(:title, :completed)
   end
 end

@@ -8,9 +8,17 @@
 </script>
 
 <script>
+  import Row from './_components/Row.svelte';
+
   export let todos = [];
 </script>
 
+<svelte:head>
+	<title>Todos</title>
+</svelte:head>
+
+<h2>Todos</h2>
+
 {#each todos as todo}
-  <div><a rel=prefetch href="{`/todos/${todo.id}`}">{todo.title}</a></div>
+  <Row {todo} />
 {/each}
