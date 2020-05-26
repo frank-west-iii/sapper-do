@@ -8,6 +8,10 @@
 </script>
 
 <script>
+	import Button from '../../components/Button.svelte';
+	import Checkbox from '../../components/forms/Checkbox.svelte';
+	import TextInput from '../../components/forms/TextInput.svelte';
+
   export let todo = {}
 
   const handleSubmit = () => fetch(`http://localhost:3000/todos/${todo.id}`, {
@@ -24,11 +28,12 @@
 </svelte:head>
 
 <a href="/todos">Todos</a> &gt;
-<a href="/todos/{todo.id}">Show</a> &gt;
 Edit
 
 <form on:submit|preventDefault={handleSubmit}>
-  <input type="text" bind:value={todo.title} />
-  <input type="checkbox" bind:checked={todo.completed} />
-  <button primary>Save</button>
+  <TextInput bind:value={todo.title} label="Title" name="title" />
+  <Checkbox bind:checked={todo.completed} label="Completed?" />
+  <div class="flex justify-end">
+    <Button text="Save" />
+  </div>
 </form>

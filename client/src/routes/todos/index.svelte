@@ -13,12 +13,23 @@
   export let todos = [];
 </script>
 
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+</style>
+
 <svelte:head>
 	<title>Todos</title>
 </svelte:head>
 
 <h2>Todos</h2>
 
-{#each todos as todo}
-  <Row {todo} />
-{/each}
+<div class="container">
+  {#each todos as todo}
+    <Row {todo} />
+  {/each}
+</div>
